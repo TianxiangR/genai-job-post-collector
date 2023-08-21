@@ -1,0 +1,1 @@
+# genai-job-post-collector
