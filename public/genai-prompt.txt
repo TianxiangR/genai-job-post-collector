@@ -1,0 +1,52 @@
+I'll give you a job description that starts with #job_description_start and ends with #job_description_end, and an array of keywords. Please tell me if the job description matches the keywords. Please response with either "true" or "false"
+
+#job_description_start
+York & Chapel is an international interactive digital agency with offices in NYC, Connecticut, San Francisco and Vancouver. We are designers, writers and strategists who use today’s marketing technologies to build strong, vibrant communities around brands. As cultural technologists and marketers, we have many tools that are constantly changing and evolving. Our purpose is to offer them to each and every client in very customized and inspired ways.
+
+Reporting to the Senior Designer, the Front End Developer will be the conduit between the UI and UX design teams and work collaboratively with our project managers and developers to create an amazing product.
+
+Y&C is a fast-paced environment. The candidate will need exceptional project management and time management skills, along with a flexible, fun-loving and positive attitude, to succeed in this role. You just never know when it comes to working with clients.
+
+Responsibilities: Here's what you'll be doing.
+
+Translation of UI designs to actual front end code that will produce visual elements of the application.
+Collaborate with UI designers, UX designers, project managers, and developers through all the phases of the project to determine how the final product would look and function
+Familiarity with technical issues around web development and ability to work constructively with web development teams
+Research and share trends in front end development that can be implemented into our work
+Compulsive attention to detail
+Presentation skills and grasp of cross-functioning team demands.
+Required: Here's what you need to have.
+
+Expert Knowledge of: VueJS with Laravel / PHP and ReactJS
+Strong working knowledge of: HTML, CSS, Rails, JavaScript/JQuery
+Expert Knowledge of responsive web design techniques
+Experience working with front end frameworks: Bootstrap, CMS websites, Wordpress
+Understanding of UI/UX design
+Understanding basic SEO concepts and adhering to them
+Able to make some UI decisions during programming
+Proficient in Photoshop and Illustrator
+Strong written and verbal communication skills
+The Ideal Candidate:
+
+3-5 years of front end development experience in an agency or similar environment
+Experience in working with UI/UX designers and teams
+Ability to adapt to changing project scopes
+Excellent time management skills to meet tight deadlines
+Excellent problem solving skills and able to resolve issues on the fly
+Beneficial Skills:
+
+Understanding of CSS pre-processing platforms (Less, Sass, SCSS)
+Experience with modern JavaScript frameworks (Angular, Backbone, Ember, etc.)
+Experience with version control tools such as Git
+Experience with backend languages such as PHP or Python
+UI design capabilities
+About York & Chapel:
+
+How does technology live happily with big brain brand strategy and dynamic shareable social content? How do one-of-kind experiences play nice with meticulous measurable results? At Y&C we elegantly solve the rubik’s cube of marketing challenges every day for some of the world’s most notable companies.
+
+That’s Technology Beautifully Articulated.
+
+York & Chapel is an agency with 16 years experience in looking at the world through an ever-evolving technology filter – going beyond traditional website development, mobile applications and micro-sites to a place few agencies tread. Join a team of talented designers, developers writers, strategists and account managers who are just as passionate as you are about bringing innovative and cutting-edge ideas to life. Some of our current clients include Fortune 500 companies in technology, entertainment, telecommunications and luxury goods.
+#job_description_end
+
+keywords = ['junior', 'front-end', 'web', 'developer'];

@@ -2,6 +2,8 @@
   "manifest_version": 3,
   "name": "GenAI Job Post Collector",
   "description": "Uses GenAI to help you find a suitable job post",
+  "permissions": ["storage", "tabs", "activeTab"],
+  "host_permissions": ["<all_urls>"],
   "version": "1.0",
   "action": {
     "default_popup": "index.html",
@@ -11,12 +13,23 @@
       "48": "./assets/icons/icon48.png",
       "128": "./assets/icons/icon128.png"
     },
-    "permissions": ["tabs", "activeTab"]
+    "permissions": ["storage", "tabs", "activeTab"]
   },
   "icons": {
     "16": "./assets/icons/icon16.png",
     "32": "./assets/icons/icon32.png",
     "48": "./assets/icons/icon48.png",
     "128": "./assets/icons/icon128.png"
-  }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "js": ["content-script.js"],
+      "matches": ["<all_urls>"],
+      "run_at": "document_start"
+    }
+  ]
 }
+
