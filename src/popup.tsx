@@ -16,7 +16,7 @@ function Popup() {
   async function getCurrentTab() {
     const queryOptions = { active: true, lastFocusedWindow: true };
     const [tab] = await chrome.tabs.query(queryOptions);
-    console.log("current tab url: ", tab.url);
+    // console.log("current tab url: ", tab.url);
     return tab;
   }
 
@@ -24,7 +24,7 @@ function Popup() {
   async function startJobCollect() {
     const activeTab = await getCurrentTab();
     if (activeTab) {
-      chrome.tabs.sendMessage(activeTab.id || 0, 
+      chrome.tabs.sendMessage(activeTab?.id || 0, 
         { 
           type: 'RUN_JOB_COLLECTOR', 
           tab: activeTab,

@@ -24,15 +24,16 @@ module.exports = {
     "rules": {
         "@typescript-eslint/no-unused-vars": [1],
         "@typescript-eslint/no-explicit-any": [1],
+        '@typescript-eslint/no-var-requires': 'off',
         "semi": [2, "always"],
         "indent": [2, 2],
         "require-jsdoc": [1, {
             "require": {
                 "FunctionDeclaration": true,
-                "MethodDefinition": true,
-                "ClassDeclaration": true,
+                "MethodDefinition": false,
+                "ClassDeclaration": false,
                 "ArrowFunctionExpression": true,
-                "FunctionExpression": true
+                "FunctionExpression": true,
             }
         }]
     },
