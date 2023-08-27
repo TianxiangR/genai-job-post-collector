@@ -1,13 +1,16 @@
 import React from 'react';
-import './App.css';
+import ReactDOM from 'react-dom/client';
+import './Popup.css';
 import KeywordList from './components/keyword/KeywordList';
+
+const root = ReactDOM.createRoot(document.getElementById('react-root') as HTMLElement);
 
 /**
  * The base component of the App
  * @param props 
  * @returns 
  */
-function App() {
+function Popup() {
   const keywords = ['front-end', 'web', 'developer'];
   // eslint-disable-next-line require-jsdoc
   async function getCurrentTab() {
@@ -42,4 +45,8 @@ function App() {
   );  
 }
 
-export default App;
+root.render(
+  <React.StrictMode>
+    <Popup />
+  </React.StrictMode>
+);

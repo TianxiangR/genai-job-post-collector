@@ -36,5 +36,5 @@ module.exports = {
             }
         }]
     },
-    "ignorePatterns": [".eslintrc.js", "build/*"]
+    "ignorePatterns": [".eslintrc.js", "build/*", "dist/*"]
 }
