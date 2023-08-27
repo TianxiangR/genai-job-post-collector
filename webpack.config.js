@@ -5,14 +5,16 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    popup: './src/popup.tsx',
+    popup: path.resolve('./src/popup.tsx'),
+    background: path.resolve('./src/chrome/background.ts'),
+    contentScript: path.resolve('./src/chrome/contentScript.ts')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js']
+    extensions: ['.tsx', '.ts', '.d.ts', '.jsx', '.js', '.d.js']
   },
   module: {
     rules: [
@@ -39,7 +41,10 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: 'public'
+          from: 'manifest.json'
+        },
+        {
+          from: './assets', to: './assets'
         }
       ]
     })
