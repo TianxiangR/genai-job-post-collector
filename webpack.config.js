@@ -5,9 +5,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    popup: path.resolve('./src/popup.tsx'),
-    background: path.resolve('./src/chrome/background.ts'),
-    contentScript: path.resolve('./src/chrome/contentScript.ts')
+    background: path.resolve('./chrome/background.ts'),
+    contentScript: path.resolve('./chrome/contentScript.ts')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -19,13 +18,27 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-typescript',
+            ],
           },
-        ],
+        },
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.css$/,
@@ -35,8 +48,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ 
-      template: './src/popup.html', 
-      filename: 'popup.html' 
+      template: './build/index.html', 
+      filename: 'index.html' 
     }),
     new CopyPlugin({
       patterns: [
@@ -45,6 +58,12 @@ module.exports = {
         },
         {
           from: './assets', to: './assets'
+        },
+        {
+          from: './build',
+          globOptions: {
+            ignore: ['**/index.html']
+          }
         }
       ]
     })

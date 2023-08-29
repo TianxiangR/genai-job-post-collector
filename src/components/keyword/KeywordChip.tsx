@@ -1,6 +1,5 @@
+import Chip from '@mui/material/Chip';
 import React, { useState } from 'react';
-import CloseIcon from '../../svg/CloseIcon';
-import { CloseButton, KeywordBubble, KeywordText } from './styled';
 
 export interface KeywordProps {
     label: string;
@@ -12,7 +11,7 @@ export interface KeywordProps {
  * @param props 
  * @returns 
  */
-const Keyword = (props: KeywordProps) => {
+const KeywordChip = (props: KeywordProps) => {
   const { label, onRemove = () => undefined} = props;
   const [isMouseOver, setMouseOver] = useState<boolean>(false);
 
@@ -31,16 +30,10 @@ const Keyword = (props: KeywordProps) => {
   };
 
   return (
-    <KeywordBubble onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-      <KeywordText>
-        {label}
-      </KeywordText>
-
-      {isMouseOver && <CloseButton onClick={() => onRemove()}>
-        <CloseIcon />
-      </CloseButton>}
-    </KeywordBubble>
+    <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+      <Chip label={label} variant="outlined" onDelete={isMouseOver ? onRemove : undefined}/>
+    </div>
   );
 };
 
-export default Keyword;
+export default KeywordChip;

@@ -1,7 +1,9 @@
+import AddIcon from '@mui/icons-material/Add';
+import Chip from '@mui/material/Chip';
+import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
-import { KeywordBubble, KeywordInputBar, KeywordInputContainer } from './styled';
-import PlusIcon from '../../svg/PlusIcon';
 import CheckmarkIcon from '../../svg/CheckmarkIcon';
+import { KeywordBubble, KeywordInputContainer } from './styled';
 
 export interface KeywordInputProps {
   onSubmit?: (content: string) => void;
@@ -42,13 +44,19 @@ const KeywordInput = (props: KeywordInputProps) => {
   };
 
   const PlusButton = (
-    <KeywordBubble style={{cursor: 'pointer'}} onClick={() => handleActivateInput()}>
-      <PlusIcon />
-    </KeywordBubble>);
+    <Chip color="primary" icon={<AddIcon />} label="Add" onClick={handleActivateInput}/>);
 
   const InputBar = (
     <KeywordInputContainer>
-      <KeywordInputBar autoFocus tabIndex={0} onChange={(e) => setInputText(e.target.value) } onKeyDown={(e) => onEnter(e)} placeholder="enter a keyword"/>
+      {/* <KeywordInputBar autoFocus tabIndex={0} onChange={(e) => setInputText(e.target.value) } onKeyDown={(e) => onEnter(e)} placeholder="enter a keyword"/> */}
+      <TextField label="keyword" 
+        variant="outlined" 
+        size="small" 
+        autoFocus 
+        tabIndex={0} 
+        onChange={(e) => setInputText(e.target.value) } 
+        onKeyDown={(e) => onEnter(e)}
+      />
       <KeywordBubble style={{cursor: 'pointer'}} onClick={() => submit()}>
         <CheckmarkIcon />
       </KeywordBubble>

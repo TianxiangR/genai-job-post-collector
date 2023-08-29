@@ -1,52 +1,48 @@
-I'll give you a job description that starts with #job_description_start and ends with #job_description_end, and an array of keywords. Please tell me if the job description matches the keywords. Please response with either "true" or "false"
+I'll give you a job description that starts with #job_description_start and ends with #job_description_end, and an array of keywords. Please tell me if the job description matches the keywords. primary_keywords will contain the keywords that must match the job description. secondary_keywords will contain the keywods that is nice to have them semantically in the job description, but it is not mandatory. exclusion_keywords will contain the keywords that must not semantically appear in the job description. Please response with the JSON format template like this: 
+
+{
+  matches: {'true' if you think all the primary_keywords matches the job descriptoin and no keywords in exclusion_keywords semantically appears in the job description, else 'false'},
+  matching_secondary_keywords: [{a list of keywords from secondary_keywords that matches the job description}],
+  matching_exclusion_keywords: [{a list of keywords from exclusion_keywords that matches the job description}]
+}
+
+DO NOT RESPONSE ANYTHING ELSE OTHER THAN THE JSON
 
 #job_description_start
-York & Chapel is an international interactive digital agency with offices in NYC, Connecticut, San Francisco and Vancouver. We are designers, writers and strategists who use today’s marketing technologies to build strong, vibrant communities around brands. As cultural technologists and marketers, we have many tools that are constantly changing and evolving. Our purpose is to offer them to each and every client in very customized and inspired ways.
+JobTitle: Senior Embedded Software Developer
 
-Reporting to the Senior Designer, the Front End Developer will be the conduit between the UI and UX design teams and work collaboratively with our project managers and developers to create an amazing product.
+Caracal Technologies Inc. is an R&D firm developing embedded products and cloud-based solutions for unattended payment systems. We have a small, close-knit team that has fun using many technologies to solve our customers’ unique needs. We are growing and are looking for a Senior Embedded Software Developer with solid development experience.
 
-Y&C is a fast-paced environment. The candidate will need exceptional project management and time management skills, along with a flexible, fun-loving and positive attitude, to succeed in this role. You just never know when it comes to working with clients.
+Responsibilities include:
 
-Responsibilities: Here's what you'll be doing.
+Work alongside a team of Software, Firmware, and Hardware Engineers developing applications and device interfaces for unattended payment kiosks
+Application of modern development methods, developing robust and supportable code with a quality and customer focus
+Participation in the complete design life cycle, from high-level design through to testing and documentation
+Documentation of code, per industry best practices
+Qualifications:
 
-Translation of UI designs to actual front end code that will produce visual elements of the application.
-Collaborate with UI designers, UX designers, project managers, and developers through all the phases of the project to determine how the final product would look and function
-Familiarity with technical issues around web development and ability to work constructively with web development teams
-Research and share trends in front end development that can be implemented into our work
-Compulsive attention to detail
-Presentation skills and grasp of cross-functioning team demands.
-Required: Here's what you need to have.
+Engineering or computer science degree or proven technical diploma equivalency
+At least 7 years of development experience
+Working knowledge of C
+Experience with other languages is desirable
+Experience in software development and trouble-shooting on hardware platforms and products
+Experience with issue tracking and CM tools such as Jira and Git
+Ability to read a schematic of electronics is desirable
+Experience with the Java programming language, especially multi-threaded development is desirable
+Familiarity with Android and Linux development practices is desirable
+Good written and spoken English, and an effective communicator
+Is currently legal to work in Canada (citizen, permanent resident, or valid working permit)
+We’re located near Broadway and Oak in Vancouver, near major transit connections and a good variety of restaurants nearby. We have a close-knit team in a friendly neighborhood.
 
-Expert Knowledge of: VueJS with Laravel / PHP and ReactJS
-Strong working knowledge of: HTML, CSS, Rails, JavaScript/JQuery
-Expert Knowledge of responsive web design techniques
-Experience working with front end frameworks: Bootstrap, CMS websites, Wordpress
-Understanding of UI/UX design
-Understanding basic SEO concepts and adhering to them
-Able to make some UI decisions during programming
-Proficient in Photoshop and Illustrator
-Strong written and verbal communication skills
-The Ideal Candidate:
+This position is for in-office work, because software development and verification happen on hardware representative of the payment systems and because of the close collaboration needed for successful team-based product development.
 
-3-5 years of front end development experience in an agency or similar environment
-Experience in working with UI/UX designers and teams
-Ability to adapt to changing project scopes
-Excellent time management skills to meet tight deadlines
-Excellent problem solving skills and able to resolve issues on the fly
-Beneficial Skills:
+We will only be reviewing local candidates as relocation assistance is not available.
 
-Understanding of CSS pre-processing platforms (Less, Sass, SCSS)
-Experience with modern JavaScript frameworks (Angular, Backbone, Ember, etc.)
-Experience with version control tools such as Git
-Experience with backend languages such as PHP or Python
-UI design capabilities
-About York & Chapel:
+Please forward a cover letter and resume by email.
 
-How does technology live happily with big brain brand strategy and dynamic shareable social content? How do one-of-kind experiences play nice with meticulous measurable results? At Y&C we elegantly solve the rubik’s cube of marketing challenges every day for some of the world’s most notable companies.
-
-That’s Technology Beautifully Articulated.
-
-York & Chapel is an agency with 16 years experience in looking at the world through an ever-evolving technology filter – going beyond traditional website development, mobile applications and micro-sites to a place few agencies tread. Join a team of talented designers, developers writers, strategists and account managers who are just as passionate as you are about bringing innovative and cutting-edge ideas to life. Some of our current clients include Fortune 500 companies in technology, entertainment, telecommunications and luxury goods.
+Job Type: Full-time
 #job_description_end
 
-keywords = ['junior', 'front-end', 'web', 'developer'];
+primary_keywords = ['front-end', 'developer'];
+secondary_keywords = ['junior', 'developer', 'embedded'];
+exclusion_keywords = ['senior'];
