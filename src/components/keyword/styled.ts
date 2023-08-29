@@ -66,6 +66,7 @@ export const KeywordsContainer = styled.div`
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
 `;
 
 export const Expandable = styled.div<{childHeight?: string, expanded?: boolean}>`
