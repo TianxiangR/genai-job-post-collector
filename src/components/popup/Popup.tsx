@@ -3,12 +3,10 @@ import { Card, Tab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { StateProvider } from '../../hooks/useStateContext';
 import JobsPage from '../../pages/jobs/JobsPage';
-import SampleTablePage from '../../pages/jobs/SampleTablePage';
 import MainPage from '../../pages/main/MainPage';
 import SettingPage from '../../pages/setting/SettingPage';
 import { log } from '../../utils';
 import './Popup.css';
-import { runChromeUtilWithSafeGaurdAsync, setItemToStorageByKey } from '../../chromeUtils';
 
 
 /**
@@ -50,7 +48,6 @@ function Popup() {
               <Tab label="Main" value="1" />
               <Tab label="Jobs" value="2" />
               <Tab label="Setting" value="3" />
-              <Tab label="Sample" value="4" />
             </TabList>
             <TabPanel value="1">
               <MainPage />
@@ -60,9 +57,6 @@ function Popup() {
             </TabPanel>
             <TabPanel value="3">
               <SettingPage />
-            </TabPanel>
-            <TabPanel value="4">
-              <SampleTablePage />
             </TabPanel>
           </TabContext>
         </Card>
