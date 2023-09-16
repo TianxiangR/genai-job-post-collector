@@ -1,5 +1,6 @@
-import React, { Dispatch, createContext, useContext, useReducer } from "react";
-import stateReducer, { State, StateAction, initialState } from "../reducers/stateReducer";
+import React, { createContext, Dispatch, useContext, useReducer } from "react";
+
+import stateReducer, { initialState,State, StateAction } from "../reducers/stateReducer";
 
 // Prepares the dataLayer
 export const StateContext = createContext<[State, Dispatch<StateAction>]>([

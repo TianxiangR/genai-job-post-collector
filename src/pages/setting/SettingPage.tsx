@@ -3,7 +3,9 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { Chip, IconButton, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { STORAGE_NAMESPACES, getItemFromStorageByKey, runChromeUtilWithSafeGaurdAsync, setItemToStorageByKey } from '../../chromeUtils';
+
+import { getItemFromStorageByKey, runChromeUtilWithSafeGaurdAsync, setItemToStorageByKey,STORAGE_NAMESPACES } from '../../chromeUtils';
+import { useStateContext } from '../../hooks/useStateContext';
 
 const ApiKeyContainer = styled.div`
   display: inline-flex;
@@ -19,6 +21,7 @@ const SettingPage = () => {
   const [apiKey, setApiKey] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [inputContent, setInputContent] = useState('');
+  const [state] = useStateContext();
 
   useEffect(() => {
     runChromeUtilWithSafeGaurdAsync(() => getItemFromStorageByKey(STORAGE_NAMESPACES.API_KEY))
@@ -52,9 +55,10 @@ const SettingPage = () => {
 
   const notEditing = <>
     <Chip label={renderApiKey()} style={{width: 'fit-content'}}/>
+    { !state.isCollecting &&
     <IconButton size="small" onClick={startEditing}>
       <SettingsIcon />
-    </IconButton>
+    </IconButton>}
   </>;
 
   const editing = <>

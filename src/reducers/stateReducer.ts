@@ -11,7 +11,7 @@ export type State = {
 }
 
 export type StateAction = {
-  type:  string;
+  type: string;
   value?: unknown;
 }
 

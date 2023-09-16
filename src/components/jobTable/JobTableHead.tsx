@@ -1,5 +1,6 @@
 import { Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import React from 'react';
+
 import { HeadCellSpec, Order, SortId } from './types';
 
 const headCellSpecs: readonly HeadCellSpec[] = [
@@ -63,7 +64,7 @@ const JobTableHeader = (props: JobTableHeaderProps) => {
           />
         </TableCell>
         {headCellSpecs.map((spec, index) => {
-          return <TableCell 
+          const sortable = <TableCell 
             key={spec.id}
             align={index === 0 ? 'left' : 'right'}
             padding={index === 0 ? 'none' : 'normal'}
@@ -77,6 +78,16 @@ const JobTableHeader = (props: JobTableHeaderProps) => {
               {spec.label}
             </TableSortLabel>
           </TableCell>;
+
+          const nonSortable = <TableCell 
+            key={spec.id}
+            align={index === 0 ? 'left' : 'right'}
+            padding={index === 0 ? 'none' : 'normal'}
+            sortDirection={orderBy === spec.id ? order : false}
+          >
+            {spec.label}
+          </TableCell>;
+          return spec.sortable ? sortable : nonSortable;
         })}
       </TableRow>
     </TableHead>

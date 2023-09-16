@@ -12,7 +12,7 @@ export interface KeywordProps {
  * @returns 
  */
 const KeywordChip = (props: KeywordProps) => {
-  const { label, onRemove = () => undefined} = props;
+  const { label, onRemove} = props;
   const [isMouseOver, setMouseOver] = useState<boolean>(false);
 
   /**

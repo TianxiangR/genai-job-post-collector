@@ -6,3 +6,7 @@ export type JobInfo = {
   matchedSecondaryKeywords: string[];
   url: string;
 }
+
+export type AugmentedJobInfo = {
+  id: number;
+} & JobInfo;

@@ -1,12 +1,14 @@
 import { Checkbox, Link, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
-import React, { Dispatch, SetStateAction } from 'react';
-import { JobInfo } from '../../types';
+import React, { Dispatch, SetStateAction, useMemo } from 'react';
+
+import { AugmentedJobInfo, JobInfo } from '../../types';
 import JobTableHead from './JobTableHead';
 import EnhancedTableToolbar from './ToolBar';
 import { Order, SortId } from './types';
 
 export interface JobTableProps {
   jobList: JobInfo[];
+  augmentedJobList: AugmentedJobInfo[];
   setJobList: Dispatch<SetStateAction<JobInfo[]>>;
 }
 
@@ -15,10 +17,19 @@ export interface JobTableProps {
  * @returns 
  */
 const JobTable = (props: JobTableProps) => {
-  const { jobList, setJobList } = props;
+  const { jobList, setJobList, augmentedJobList } = props;
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<SortId>('id');
   const [selected, setSelected] = React.useState<number[]>([]);
+  const sortedList = useMemo(() => {
+    const sorted = [...augmentedJobList].sort((a, b) => {
+      if (a[orderBy] > b[orderBy]) return 1;
+      if (a[orderBy] < b[orderBy]) return -1;
+      return 0;
+    });
+
+    return order === 'asc' ? sorted: sorted.reverse();
+  }, [orderBy, order, augmentedJobList]);
 
   /**
    * 
@@ -84,6 +95,7 @@ const JobTable = (props: JobTableProps) => {
     setSelected([]);
   };
 
+
   return (
     <TableContainer sx={{maxHeight: '350px'}}>
       <EnhancedTableToolbar numSelected={selected.length} onDelete={handleDelete}/>
@@ -97,12 +109,10 @@ const JobTable = (props: JobTableProps) => {
           rowCount={jobList.length} />
       
         <TableBody>
-          {jobList.map((jobInfo, index) => {
+          { sortedList.map((jobInfo, index) => {
             const isItemSelected = isSelected(index);
             const selectHandler = createHandleSelectByIndex(index);
             return <TableRow
-              hover
-              onClick={(event) => undefined}
               role="checkbox"
               tabIndex={-1}
               key={index}
@@ -121,7 +131,7 @@ const JobTable = (props: JobTableProps) => {
                 scope="row"
                 padding="none"
               >
-                {index}
+                {jobInfo.id}
               </TableCell>
               <TableCell align="right" sx={{whiteSpace: 'nowrap'}}>{jobInfo.jobTitle}</TableCell>
               <TableCell align="right" sx={{whiteSpace: 'nowrap'}}>{jobInfo.companyName}</TableCell>

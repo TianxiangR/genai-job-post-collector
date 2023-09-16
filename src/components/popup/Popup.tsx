@@ -1,12 +1,14 @@
+import './Popup.css';
+
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Card, Tab } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+
 import { StateProvider } from '../../hooks/useStateContext';
 import JobsPage from '../../pages/jobs/JobsPage';
 import MainPage from '../../pages/main/MainPage';
 import SettingPage from '../../pages/setting/SettingPage';
 import { log } from '../../utils';
-import './Popup.css';
 
 
 /**

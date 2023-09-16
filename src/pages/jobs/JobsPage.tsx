@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { STORAGE_NAMESPACES, getItemFromStorageByKey, runChromeUtilWithSafeGaurd, runChromeUtilWithSafeGaurdAsync } from '../../chromeUtils';
+import React, { useEffect, useMemo, useState } from 'react';
+
+import { getItemFromStorageByKey, runChromeUtilWithSafeGaurd, runChromeUtilWithSafeGaurdAsync,STORAGE_NAMESPACES } from '../../chromeUtils';
 import JobTable from '../../components/jobTable/JobTable';
 import { JobInfo } from '../../types';
 
@@ -9,6 +10,14 @@ import { JobInfo } from '../../types';
  */
 const JobsPage = () => {
   const [jobList, setJobList] = useState<JobInfo[]>([]);
+  const augmentedJobList = useMemo(() => {
+    return jobList.map((value, idx) => {
+      return {
+        ...value,
+        id: idx
+      };
+    });
+  }, [jobList]);
 
   /**
    * listen to storage change and update job list
@@ -25,7 +34,7 @@ const JobsPage = () => {
   }, []);
 
   return (
-    <JobTable jobList={jobList} setJobList={setJobList}/>
+    <JobTable jobList={jobList} setJobList={setJobList} augmentedJobList={augmentedJobList}/>
   );
 };
 

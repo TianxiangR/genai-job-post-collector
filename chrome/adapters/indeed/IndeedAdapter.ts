@@ -20,13 +20,13 @@ class IndeedAdapter extends BaseAdapter {
   getCompanyLocationByIndex(idx: number, jobList: HTMLCollectionOf<Element>): string {
     const jobCard = jobList[idx];
     const companyInfo = jobCard?.getElementsByClassName('companyInfo')?.[0];
-    return companyInfo?.getElementsByClassName('companyName')?.[0].textContent || 'Unknown';
+    return companyInfo?.getElementsByClassName('companyLocation')?.[0].textContent || 'Unknown';
   }
 
   getCompanyNameByIndex(idx: number, jobList: HTMLCollectionOf<Element>): string {
     const jobCard = jobList[idx];
     const companyInfo = jobCard?.getElementsByClassName('companyInfo')?.[0];
-    return companyInfo?.getElementsByClassName('companyLocation')?.[0].textContent || 'Unknown';
+    return companyInfo?.getElementsByClassName('companyName')?.[0].textContent || 'Unknown';
   }
 
   jumpToJobPageByIndex(idx: number, jobList: HTMLCollectionOf<Element>): void {

@@ -1,6 +1,6 @@
 import { DelayOptions, MatchOptions } from "./types";
 
-const promptTemplate = `I'll give you a job description that starts with #job_description_start and ends with #job_description_end, and an array of keywords. Please tell me if the job description matches the keywords. primary_keywords will contain the keywords that must match the job description. secondary_keywords will contain the keywods that is nice to have them semantically in the job description, but it is not mandatory. exclusion_keywords will contain the keywords that must not semantically appear in the job description. Please response with the JSON format template like this: 
+const promptTemplate = `I'll give you a job description that starts with #job_description_start and ends with #job_description_end, and arrays of keywords. Please tell me if the job description matches the keywords. primary_keywords will contain the keywords that must match the job description. secondary_keywords will contain the keywods that is nice to have them semantically in the job description, but it is not mandatory. exclusion_keywords will contain the keywords that must not semantically appear in the job description. Please response with the JSON format template like this: 
 
 {
   matches: {'true' if you think all the primary_keywords matches the job descriptoin and no keywords in exclusion_keywords semantically appears in the job description, else 'false'},
@@ -58,6 +58,7 @@ const startChatCompletion = async (message: string, apiKey: string) => {
       model: 'gpt-3.5-turbo',
       temperature: 0.7,
     })
+    
   };
 
   return await fetch('https://api.openai.com/v1/chat/completions', options);
@@ -109,7 +110,7 @@ export async function runWithRetryAndDelay<T> (callback: () => T | null | undefi
       if (delayTime) {
         await delay(delayTime);
       }
-      return await runWithRetryAndDelay(callback, { retry: retry - 1, delayTime});
+      return await runWithRetryAndDelay(callback, {retry: retry - 1, delayTime});
     }
     return null as T;
   }
@@ -117,9 +118,9 @@ export async function runWithRetryAndDelay<T> (callback: () => T | null | undefi
 }
 
 
-export async function getItemFromStorageByKey(key: string, defaultValue?: unknown = null) {
+export async function getItemFromStorageByKey(key: string, defaultValue: unknown = null) {
   const item = await chrome.storage.local.get(key);
-  return item?.[key] || defaultValue;
+  return item?.[key] || defaultValue ; 
 }
 
 /**

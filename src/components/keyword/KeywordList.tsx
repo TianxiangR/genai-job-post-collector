@@ -1,16 +1,22 @@
 import { Divider, List, ListItem, Typography } from '@mui/material';
 import React, { useEffect, useReducer } from 'react';
-import { STORAGE_NAMESPACES, getItemFromStorageByKey, runChromeUtilWithSafeGaurdAsync, setItemToStorageByKey } from '../../chromeUtils';
-import keywordsReducer, { KEYWORDS_ACTIONS, initialKeywords } from '../../reducers/keywordsReducer';
+
+import { getItemFromStorageByKey, runChromeUtilWithSafeGaurdAsync, setItemToStorageByKey,STORAGE_NAMESPACES } from '../../chromeUtils';
+import keywordsReducer, { initialKeywords,KEYWORDS_ACTIONS } from '../../reducers/keywordsReducer';
 import KeywordChip from './KeywordChip';
 import KeywordInput from './KeywordInput';
 import { KeywordsContainer } from './styled';
+
+export interface KeywordListProps {
+  enableEditing?: boolean;
+} 
 
 /**
  * KeywordList component
  * @returns 
  */
-const KeywordList = () => {
+const KeywordList = (props: KeywordListProps) => {
+  const { enableEditing } = props;
   const [{primaryKeywords, secondaryKeywords, exclusionKeywords}, dispatch] = useReducer(keywordsReducer, initialKeywords);
 
   useEffect(() => {
@@ -124,9 +130,9 @@ const KeywordList = () => {
           </Typography>
           <KeywordsContainer >
             {primaryKeywords.map((value, index) => {
-              return <KeywordChip key={index} label={value} onRemove={() => removeItemFromPrimary(index)} />;
+              return <KeywordChip key={index} label={value} onRemove={enableEditing ? (() => removeItemFromPrimary(index)) : undefined} />;
             })}
-            <KeywordInput onSubmit={addItemToPrimary}/>
+            {enableEditing && <KeywordInput onSubmit={addItemToPrimary}/>}
           </KeywordsContainer>
         </div>
       </ListItem>
@@ -138,9 +144,9 @@ const KeywordList = () => {
           </Typography>
           <KeywordsContainer >
             {secondaryKeywords.map((value, index) => {
-              return <KeywordChip key={index} label={value} onRemove={() => removeItemFromSecondary(index)} />;
+              return <KeywordChip key={index} label={value} onRemove={enableEditing ? (() => removeItemFromSecondary(index)) : undefined} />;
             })}
-            <KeywordInput onSubmit={addItemToSecondary}/>
+            {enableEditing && <KeywordInput onSubmit={addItemToSecondary}/>}
           </KeywordsContainer>
         </div>
       </ListItem>
@@ -152,9 +158,9 @@ const KeywordList = () => {
           </Typography>
           <KeywordsContainer >
             {exclusionKeywords.map((value, index) => {
-              return <KeywordChip key={index} label={value} onRemove={() => removeItemFromExcluded(index)} />;
+              return <KeywordChip key={index} label={value} onRemove={enableEditing ? (() => removeItemFromExcluded(index)) : undefined} />;
             })}
-            <KeywordInput onSubmit={addItemToExclude}/>
+            {enableEditing && <KeywordInput onSubmit={addItemToExclude}/>}
           </KeywordsContainer>
         </div>
       </ListItem>

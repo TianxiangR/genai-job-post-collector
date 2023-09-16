@@ -1,6 +1,7 @@
 import { ElectricBolt } from '@mui/icons-material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import React from 'react';
+
 import { getCurrentTab, runChromeUtilWithSafeGaurdAsync } from '../../chromeUtils';
 import KeywordList from '../../components/keyword/KeywordList';
 import { useStateContext } from '../../hooks/useStateContext';
@@ -34,7 +35,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <KeywordList/>
+      <KeywordList enableEditing={!state.isCollecting}/>
       <LoadingButton
         size="small"
         onClick={startJobCollect}

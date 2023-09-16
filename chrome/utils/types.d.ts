@@ -4,6 +4,7 @@ export type MatchOptions = {
   jobTitle: string;
   jobDescription: string;
   keywords: Keywords;
+  signal?: AbortSignal;
 }
 
 export type DelayOptions = {

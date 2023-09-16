@@ -2,6 +2,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
+
 import CheckmarkIcon from '../../svg/CheckmarkIcon';
 import { KeywordBubble, KeywordInputContainer } from './styled';
 

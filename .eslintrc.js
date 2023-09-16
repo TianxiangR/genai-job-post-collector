@@ -19,9 +19,12 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "simple-import-sort"
     ],
     "rules": {
+        "simple-import-sort/imports": [2],
+        "no-multi-spaces": [2],
         "@typescript-eslint/no-unused-vars": [1],
         "@typescript-eslint/no-explicit-any": [1],
         '@typescript-eslint/no-var-requires': 'off',
