@@ -1,5 +1,6 @@
 import { Checkbox, Link, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import React, { Dispatch, SetStateAction } from 'react';
+import { STORAGE_NAMESPACES, runChromeUtilWithSafeGaurdAsync, setItemToStorageByKey } from '../../chromeUtils';
 import { JobInfo } from '../../types';
 import JobTableHead from './JobTableHead';
 import EnhancedTableToolbar from './ToolBar';
@@ -74,28 +75,30 @@ const JobTable = (props: JobTableProps) => {
   /**
    * delete all the selected rows
    */
-  const handleDelete = () => {
+  const handleDelete = async () => {
     const updatedList = jobList.filter((_, index) => {
       // keep the unselected
       return !isSelected(index);
     });
+
+    await runChromeUtilWithSafeGaurdAsync(() => setItemToStorageByKey(STORAGE_NAMESPACES.JOB_INFOS, updatedList));
 
     setJobList(updatedList);
     setSelected([]);
   };
 
   return (
-    <TableContainer sx={{maxHeight: '350px'}}>
-      <EnhancedTableToolbar numSelected={selected.length} onDelete={handleDelete}/>
+    <TableContainer sx={{ maxHeight: '350px' }}>
+      <EnhancedTableToolbar numSelected={selected.length} onDelete={handleDelete} />
       <Table size='medium'>
-        <JobTableHead 
-          numSelected={selected.length} 
+        <JobTableHead
+          numSelected={selected.length}
           onRequestSort={handleRequestSort}
-          onSelectAllClick={handleSelectAllClick} 
-          order={order} 
+          onSelectAllClick={handleSelectAllClick}
+          order={order}
           orderBy={orderBy}
           rowCount={jobList.length} />
-      
+
         <TableBody>
           {jobList.map((jobInfo, index) => {
             const isItemSelected = isSelected(index);
@@ -123,9 +126,9 @@ const JobTable = (props: JobTableProps) => {
               >
                 {index}
               </TableCell>
-              <TableCell align="right" sx={{whiteSpace: 'nowrap'}}>{jobInfo.jobTitle}</TableCell>
-              <TableCell align="right" sx={{whiteSpace: 'nowrap'}}>{jobInfo.companyName}</TableCell>
-              <TableCell align="right" sx={{whiteSpace: 'nowrap'}}>{jobInfo.companyLocation}</TableCell>
+              <TableCell align="right" sx={{ whiteSpace: 'nowrap' }}>{jobInfo.jobTitle}</TableCell>
+              <TableCell align="right" sx={{ whiteSpace: 'nowrap' }}>{jobInfo.companyName}</TableCell>
+              <TableCell align="right" sx={{ whiteSpace: 'nowrap' }}>{jobInfo.companyLocation}</TableCell>
               <TableCell align="right">
                 <Link href={jobInfo.url} target="_blank">
                   Link
