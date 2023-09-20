@@ -12,7 +12,7 @@ export type DelayOptions = {
 }
 
 export type GenAIResponse = {
-  matches?: boolean;
+  matches?: string | boolean;
   matchedSecondaryKeywords?: string[];
   matchedExclusionKeywords?: string[];
 }

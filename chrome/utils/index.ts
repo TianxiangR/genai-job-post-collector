@@ -76,6 +76,7 @@ export const genAiJobMatching = async (matchOptions: MatchOptions, apiKey: strin
   return data.choices?.[0]?.message?.content || '';
 };
 
+
 /**
  * wraping JSON.parse with try-catch to avoid Error
  * @param text 

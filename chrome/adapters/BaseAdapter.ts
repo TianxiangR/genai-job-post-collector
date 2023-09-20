@@ -47,7 +47,8 @@ class BaseAdapter {
         const parsedResponse: GenAIResponse = safeParseJson(response);
 
         log(`parsedResponse ${parsedResponse}`);
-        const { matches, matchedSecondaryKeywords } = parsedResponse;
+        const { matchedSecondaryKeywords } = parsedResponse;
+        const matches = (/true/).test(String(parsedResponse.matches) || '');
         const jobInfo = {
           jobTitle,
           companyName,
@@ -56,10 +57,9 @@ class BaseAdapter {
           matchedSecondaryKeywords,
           url: window.location.href || ''
         };
-        if (matches) {
+        if (typeof matches === 'boolean' && matches) {
           storedJobs = [...storedJobs, jobInfo];
           await setItemToStorageByKey(STORAGE_NAMESPACES.JOB_INFOS, storedJobs);
-          log('Message sent to popup script');
         }
 
       } catch (e) {
